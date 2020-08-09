@@ -26,13 +26,14 @@ function rootReducer(state = INITIAL_STATE, action) {
       };
 
     case ADD_POST:
-      return {
-        ...state,
-        posts: {
-          ...state.posts,
-          [action.payload.id]: { ...action.payload },
-        },
-      };
+      return { ...state, [action.post.id]: { ...action.post, comments: [] } };
+    // return {
+    //   ...state,
+    //   posts: {
+    //     ...state.posts,
+    //     [action.payload.id]: { ...action.payload },
+    //   },
+    // };
 
     case REMOVE_POST:
       tempPosts = { ...state.posts };
