@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.Header a {
+  margin-right: 15px;
+}
+
+.BlogForm button,
+.BlogPost button {
+  margin-right: 15px;
+}
