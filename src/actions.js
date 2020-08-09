@@ -13,7 +13,7 @@ import axios from "axios";
 
 export function loadPostsFromApi() {
   return async function (dispatch) {
-    let res = await axios.get("http://localhost:5000/api/posts");
+    let res = await axios.get("https://microblog-op.herokuapp.com/api/posts");
     dispatch(loadedPosts(res.data));
   };
 }
@@ -27,7 +27,7 @@ function loadedPosts(posts) {
 
 export function loadPostFromApi(postId) {
   return async function (dispatch) {
-    let res = await axios.get(`http://localhost:5000/api/posts/${postId}`);
+    let res = await axios.get(`https://microblog-op.herokuapp.com/api/posts/${postId}`);
     dispatch(loadedPost(res.data));
   };
 }
@@ -41,7 +41,7 @@ function loadedPost(post) {
 
 export function savePostToApi(post) {
   return async function (dispatch) {
-    let res = await axios.post("http://localhost:5000/api/posts/", { ...post });
+    let res = await axios.post("https://microblog-op.herokuapp.com/api/posts/", { ...post });
     dispatch(savedPost(res.data));
   };
 }
@@ -55,7 +55,7 @@ export function savedPost(post) {
 
 export function updatePostToApi(post) {
   return async function (dispatch) {
-    let res = await axios.put(`http://localhost:5000/api/posts/${post.id}`, {
+    let res = await axios.put(`https://microblog-op.herokuapp.com/api/posts/${post.id}`, {
       ...post,
     });
     dispatch(updatedPost(res.data));
@@ -71,7 +71,7 @@ export function updatedPost(post) {
 
 export function removePostFromApi(postId) {
   return async function (dispatch) {
-    await axios.delete(`http://localhost:5000/api/posts/${postId}`);
+    await axios.delete(`https://microblog-op.herokuapp.com/api/posts/${postId}`);
     dispatch(removedPost(postId));
   };
 }
@@ -86,7 +86,7 @@ export function removedPost(postId) {
 export function sendCommentToApi(postId, text) {
   return async function (dispatch) {
     let res = await axios.post(
-      `http://localhost:5000/api/posts/${postId}/comments`,
+      `https://microblog-op.herokuapp.com/api/posts/${postId}/comments`,
       { text }
     );
     dispatch(receivedComment(postId, res.data));
@@ -103,7 +103,7 @@ export function receivedComment(postId, comment) {
 export function removeCommentFromApi(postId, commentId) {
   return async function (dispatch) {
     await axios.delete(
-      `http://localhost:5000/api/posts/${postId}/comments/${commentId}`
+      `https://microblog-op.herokuapp.com/api/posts/${postId}/comments/${commentId}`
     );
     dispatch(removedComment(postId, commentId));
   };
@@ -119,7 +119,7 @@ export function removedComment(postId, commentId) {
 export function updateCommentToApi(postId, commentId, text) {
   return async function (dispatch) {
     let res = await axios.put(
-      `http://localhost:5000/api/posts/${postId}/comments/${commentId}`,
+      `https://microblog-op.herokuapp.com/api/posts/${postId}/comments/${commentId}`,
       {
         text
       }
@@ -138,7 +138,7 @@ export function updatedComment(postId, commentId, comment) {
 export function sendVotesToApi(postId, direction) {
   return async function (dispatch) {
     let res = await axios.post(
-      `http://localhost:5000/api/posts/${postId}/vote/${direction}`
+      `https://microblog-op.herokuapp.com/api/posts/${postId}/vote/${direction}`
     );
     dispatch(sentVotes(postId, res.data.votes));
   };
