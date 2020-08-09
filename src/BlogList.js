@@ -11,7 +11,7 @@ function BlogList() {
 
   useEffect(() => {
     async function loadPost() {
-      dispatch(loadPostsFromApi());
+      await dispatch(loadPostsFromApi());
       setIsLoading(false);
     }
 
