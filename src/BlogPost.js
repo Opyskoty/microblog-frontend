@@ -26,10 +26,10 @@ function BlogPost() {
     return <Redirect to="/" />;
   }
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     // prompt user for confirmation
     if (window.confirm("Are you sure you want to delete?")) {
-      dispatch(removePostFromApi(id));
+      await dispatch(removePostFromApi(id));
       history.push("/");
     }
   };

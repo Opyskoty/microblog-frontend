@@ -11,14 +11,14 @@ function BlogForm({ post = false, id = false, setEdit }) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     if (id) {
-      dispatch(updatePostToApi(formData));
+      await dispatch(updatePostToApi(formData));
       setEdit(false);
       history.push(`/posts/${id}`);
     } else {
-      dispatch(savePostToApi(formData));
+      await dispatch(savePostToApi(formData));
       history.push("/");
     }
     setFormData(INITIAL_STATE);
