@@ -13,8 +13,7 @@ import thunk from "redux-thunk";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(
-  rootReducer, compose(applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  rootReducer, compose(applyMiddleware(thunk)
   ));
 
 ReactDOM.render(
